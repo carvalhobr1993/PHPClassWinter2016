@@ -1,5 +1,7 @@
 <?php
 
+// Function is created to connect all pages to the database
+
 function dbconnect() {
     $config = array(
         'DB_DNS' => 'mysql:host=localhost;port=3306;dbname=PHPClassWinter2016',

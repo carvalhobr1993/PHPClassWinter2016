@@ -9,15 +9,29 @@
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
         
+
+
     </head>
     <body>
         <?php
         
+        /* 
+         * The table is Styled with the Boot Strap
+         * 
+         * the include statement allow the page to connect to the database
+         *
+         *  
+         * 
+         */
             include './db-connect.php';
             
             $db = dbconnect();
             
+        // query selects all from the actors table
+            
             $stmt = $db->prepare("SELECT * FROM actors");
+         
+        // array defined
             
             $results = array();
         if ($stmt->execute() && $stmt->rowCount() > 0) {
