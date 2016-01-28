@@ -16,6 +16,11 @@
     <body>
         <?php
         
+        /*
+         * STyled Page with Boot strap, Table on bottom will be styled as well
+         * Include Statements will connect functions to page and database information to page
+         */
+        
         include './db_connect.php';
         include './functions.php';
         
@@ -24,11 +29,12 @@
        
         $db = dbconnect();
 
-       
+       //Statment selects all data from corps database
+        
         $stmt = $db->prepare("SELECT * FROM corps");
 
      
-       
+      
         
        $results = array();
         if ($stmt->execute() && $stmt->rowCount() > 0) {
@@ -46,7 +52,7 @@
             </thead>
         
         
-        
+       
 
             
             <?php foreach ($results as $row): ?>

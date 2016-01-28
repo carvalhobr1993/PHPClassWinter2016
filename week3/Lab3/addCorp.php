@@ -12,6 +12,12 @@
     </head>
     <body>
         <?php
+        
+        /*
+         * 
+         * Include Statements will connect functions to page and database information to page
+         */
+        
         include './db_connect.php';
         include './functions.php';
 
@@ -21,10 +27,13 @@
             $db = dbconnect();
 
             
+            // Statement that Inserts Data to the Table
+            
             $stmt = $db->prepare("INSERT INTO corps SET id = :id, corp = :corp, incorp_dt = :incorp_dt, email = :email,
                 zipcode = :zipcode, owner = :owner, phone = :phone, date = now()");
             
-             
+             // Creating values for the Input data
+            
                 $corp = filter_input(INPUT_POST, 'corp');
                 $email = filter_input(INPUT_POST, 'email');
                 $zipcode = filter_input(INPUT_POST, 'zipcode');
@@ -33,7 +42,7 @@
             
             
         
-
+           // Array to Input data
             $binds = array(
                     
                     ":corp" => $corp,
@@ -43,7 +52,7 @@
                     ":phone" => $phone,
             );
 
-
+            // Successful message and confirmation that data had been submitted
             if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
                 $results = 'Data Added';
             }

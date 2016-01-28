@@ -13,6 +13,11 @@
     <body>
         <?php
         
+        /*
+         * 
+         * Include Statements will connect functions to page and database information to page
+         */
+        
             include './db_connect.php';
             include './functions.php';
 
@@ -30,7 +35,8 @@
                 ":id" => $id
             );
 
-       
+       // Statment executed to delet records
+            
         $isDeleted = false;
         if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
             $isDeleted = true;
@@ -44,6 +50,7 @@
           Not
         <?php endif; ?>
         Deleted</h1>
+        
         
         <p> <a href="view.php">View page</a></p>
         

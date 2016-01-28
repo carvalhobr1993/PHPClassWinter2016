@@ -13,17 +13,26 @@
     <body>
         <?php
        
+        /*
+         * 
+         * Include Statements will connect functions to page and database information to page
+         */
+        
         include './db_connect.php';
         include './functions.php';
 
        
         $db = dbconnect();
 
-       
+       // Performs Function GET to retrieve id from the URL and display 1 result vs 100 results
         
         $id = filter_input(INPUT_GET, 'id');
         
+        // Query to recieve 1 id from the URL and display it.
+        
         $stmt = $db->prepare("SELECT * FROM corps WHERE id = :id");
+        
+        // binds the id to submit 1 id vs 100
         
         $binds = array(
             ":id" => $id
