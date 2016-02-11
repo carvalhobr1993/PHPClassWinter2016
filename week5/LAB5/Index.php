@@ -24,13 +24,23 @@
         $db = dbconnect();
        
         // This calls the function that addds the website to the sitelinks Data base and will Curl the URL
-        addweb ();
+        //addweb ();
         
         
         ?>
         
        
+        <h1> Welcome to The Site Collection </h1>
+    </br>
+    <label> Search for Websites </label>
+    <form action="#" method="post">
+        Enter URL <input type="text" value="" name="link"  />
+        <input type="submit" value="submit" />
         
+        
+    
+    </form>
+    <?php addweb (); ?>
     </body>
     
 </html>
