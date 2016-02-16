@@ -13,34 +13,58 @@
     </head>
     <body>
         <?php
-        require './dbconnect.php';
-        require './functions.php';
+        include_once './functions/dbconnect.php';
+        include_once './functions/functions.php';
        // includes the form to sesarch URL's
-        include_once './add.php';
-        
-        
-        
-        
-        $db = dbconnect();
+       // include_once './includes/add.php';
+       include_once './includes/Add-Functions.php';
        
-        // This calls the function that addds the website to the sitelinks Data base and will Curl the URL
-        //addweb ();
+         
         
+        
+        if ( isPostRequest() ) {
+            
+            $url = filter_input(INPUT_POST, 'link');
+            $errors = array();
+            
+            if ( !isURLValid($url) ) {
+                 $errors[] = 'Not a Valid URL';
+            }
+            
+            if ( count($errors) == 0 ) {
+                
+                if (isURLValid($url) ) {
+                    $results = 'URL Valid';
+                } else {
+                    $results = 'URL Not Valid';
+                }
+                               
+            } 
+            
+            // this creates the HTML Curl for the provided URL
+            include './includes/curl.php'; 
+        }
         
         ?>
         
-       
+      
+        
         <h1> Welcome to The Site Collection </h1>
+        
+        <?php include './includes/error.html.php'; ?>
+        
+        <?php include_once './includes/results.html.php'; ?>
+        
     </br>
     <label> Search for Websites </label>
-    <form action="#" method="post">
+    <form method="post" action="#">
         Enter URL <input type="text" value="" name="link"  />
         <input type="submit" value="submit" />
         
+ 
         
-    
     </form>
-    <?php addweb (); ?>
+   
     </body>
     
 </html>

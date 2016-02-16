@@ -12,8 +12,8 @@
     </head>
     <body>
         <?php
-        require './dbconnect.php';
-        require './functions.php';
+        require '../functions/dbconnect.php';
+        require '../functions/functions.php';
         $db = dbconnect();
           
          

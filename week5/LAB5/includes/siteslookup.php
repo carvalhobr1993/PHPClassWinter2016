@@ -13,8 +13,8 @@
     </head>
     <body>
         <?php
-        require './dbconnect.php';
-        require './functions.php';
+        require '../includes/../functions/dbconnect.php';
+        require '../functions/functions.php';
         
         $db = dbconnect();
         // STatement to take the input urls into the drop down menu
