@@ -1,11 +1,11 @@
 <?php
 
-function addweb($value) {
+function addweb($url) {
     $db = dbconnect();
     $stmt = $db->prepare("INSERT INTO sitelinks SET link = :link");
 
     $binds = array(
-        ":link" => $value
+        ":link" => $url
     );
 
     if ($stmt->execute($binds) && $stmt->rowCount() > 0) {

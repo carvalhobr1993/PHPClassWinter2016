@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         
-    <p><a href="siteslookup.php">View Saved Sites</a></p>
+    <p><a href="includes/siteslookup.php">View Saved Sites</a></p>
         <title></title>
         <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -17,7 +17,7 @@
         include_once './functions/functions.php';
        // includes the form to sesarch URL's
        // include_once './includes/add.php';
-       include_once './includes/Add-Functions.php';
+       include_once './functions/Add-Functions.php';
        
          
         
@@ -25,6 +25,7 @@
         if ( isPostRequest() ) {
             
             $url = filter_input(INPUT_POST, 'link');
+            
             $errors = array();
             
             if ( !isURLValid($url) ) {
@@ -42,28 +43,22 @@
             } 
             
             // this creates the HTML Curl for the provided URL
-            include './includes/curl.php'; 
+            // include './includes/curl.php'; 
         }
         
         ?>
         
       
         
-        <h1> Welcome to The Site Collection </h1>
-        
         <?php include './includes/error.html.php'; ?>
         
         <?php include_once './includes/results.html.php'; ?>
         
-    </br>
-    <label> Search for Websites </label>
-    <form method="post" action="#">
-        Enter URL <input type="text" value="" name="link"  />
-        <input type="submit" value="submit" />
+        <?php include_once './includes/URL-Form.html.php'; ?>
+        
         
  
-        
-    </form>
+     
    
     </body>
     

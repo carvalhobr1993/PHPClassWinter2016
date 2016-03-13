@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-    <p><a href="Index.php">Home</a></p>
+    <p><a href="../Index.php">Home</a></p>
         <title>
             <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -13,8 +13,9 @@
     </head>
     <body>
         <?php
-        require '../includes/../functions/dbconnect.php';
-        require '../functions/functions.php';
+        include_once '../functions/dbconnect.php';
+        include_once '../functions/functions.php';
+        //include_once './join.php';
         
         $db = dbconnect();
         // STatement to take the input urls into the drop down menu
