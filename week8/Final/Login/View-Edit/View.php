@@ -13,15 +13,20 @@
     </head>
     <body>
         <?php
+        include '../../Includes/session-start.req-inc.php';
         include '../../Functions/dbconnect.php';
         include '../../Functions/utils-function.php';
         
         $db = dbconnect();
         
-        $stmt = $db->prepare("SELECT * FROM address");
+        $stmt = $db->prepare("SELECT * FROM address WHERE user_id = :user_id");
         
+        $binds = array(
+                ":user_id" => $_SESSION['id']
+            );
+            var_dump($binds);
          $results = array();
-        if ($stmt->execute() && $stmt->rowCount() > 0) {
+        if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
         

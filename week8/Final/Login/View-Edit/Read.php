@@ -13,6 +13,7 @@
     </head>
     <body>
         <?php
+        include '../../Includes/session-start.req-inc.php';
         include '../../Functions/dbconnect.php';
         include '../../Functions/utils-function.php';
         
@@ -20,16 +21,17 @@
         
         
         
-        $id = filter_input(INPUT_GET, 'address_id');
+        $id = filter_input(INPUT_GET, 'id');
         
         
         
-        $stmt = $db->prepare("SELECT * FROM address WHERE address_id = :address_id");
+        $stmt = $db->prepare("SELECT * FROM address WHERE address_id = :address_id and user_id = :user_id");
         
        
         
         $binds = array(
-            ":address_id" => $id
+            ":address_id" => $id,
+            ":user_id" => $_SESSION['id']
          );
 
       
@@ -59,9 +61,9 @@
                     <td><?php echo $row['address_id']; ?></td>
                     <td><?php echo $row['address_group_id']; ?></td>
                     <td><?php echo $row['fullname']; ?></td> 
-                    <td><?php echo $row['email']; ?></td> 
+                    <td><a href="mailto:<?php echo $row['email']; ?>"><?php echo $row['email']; ?></a></td> 
                      <td><?php echo $row['address']; ?></td>  
-                     <td><?php echo $row['phone']; ?></td>
+                     <td><a href="tel:<?php echo $row['phone']; ?>"><?php echo $row['phone']; ?></a></td>
                      <td><?php echo $row['website']; ?></td>
                      <td><?php echo date("F d, Y",strtotime($row['birthday'])); ?></td>
 

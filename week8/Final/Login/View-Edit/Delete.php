@@ -13,12 +13,13 @@
     </head>
     <body>
         <?php
+        include '../../Includes/session-start.req-inc.php';
         include '../../Functions/dbconnect.php';
         include '../../Functions/utils-function.php';
         
         $db = dbconnect();
         
-        $id = filter_input(INPUT_GET, 'address_id'); 
+        $id = filter_input(INPUT_GET, 'id'); 
             
             $stmt = $db->prepare("DELETE FROM address where address_id = :address_id");
             

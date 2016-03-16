@@ -14,6 +14,8 @@ function isValidUser( $email, $pass ) {
     );
 
     if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
+        $results = $stmt->fetch(PDO::FETCH_ASSOC);
+        $_SESSION['id'] = $results['user_id'];
         return true;
     }
      

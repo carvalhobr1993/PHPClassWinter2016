@@ -2,7 +2,7 @@
 
 function createContact($addressgroupid, $fullname, $email, $birthday, $address, $phone, $website ) {
     $db = dbconnect();
-    $stmt = $db->prepare("INSERT INTO address SET address_group_id = :address_group_id, fullname = :fullname, email = :email, birthday = :birthday, address = :address, phone = :phone, website = :website ");
+    $stmt = $db->prepare("INSERT INTO address SET user_id = :user_id, address_group_id = :address_group_id, fullname = :fullname, email = :email, birthday = :birthday, address = :address, phone = :phone, website = :website ");
 
     $binds = array(
         ":address_group_id" => $addressgroupid,
@@ -11,7 +11,8 @@ function createContact($addressgroupid, $fullname, $email, $birthday, $address, 
         ":birthday" => $birthday,
         ":address" => $address,
         ":phone" => $phone,
-        ":website" => $website
+        ":website" => $website,
+        ":user_id" => $_SESSION['id']
     );
 
     if ($stmt->execute($binds) && $stmt->rowCount() > 0) {

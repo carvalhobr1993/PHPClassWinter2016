@@ -12,7 +12,7 @@
     </head>
     <body>
         <?php
-        
+        include_once '../Includes/session-start.req-inc.php';
         include_once '../Functions/dbconnect.php';
         include_once '../Functions/login-function.php';
         include_once '../Functions/utils-function.php';

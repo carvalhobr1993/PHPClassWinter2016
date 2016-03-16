@@ -13,6 +13,7 @@
     <body>
         <?php
         
+        include '../../Includes/session-start.req-inc.php';
         include_once '../../Functions/dbconnect.php';
         include_once '../../Functions/utils-function.php';
         include_once '../../Functions/Add-contact-function.php';
@@ -23,6 +24,8 @@
         // Retrieves all Groups
         
         $groups = getAllGroups();
+        
+        
         
         if ( isPostRequest() ) {
             

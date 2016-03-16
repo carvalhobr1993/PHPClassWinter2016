@@ -14,6 +14,7 @@
     <body>
         <?php
         
+        include '../../Includes/session-start.req-inc.php';
         include '../../Functions/dbconnect.php';
         include '../../Functions/utils-function.php';
         
@@ -23,7 +24,7 @@
         $result = '';
             if (isPostRequest()) {
                
-                 $addressgroupid = filter_input(INPUT_POST, 'address_group_id');
+                $addressgroupid = filter_input(INPUT_POST, 'address_group_id');
                 $fullname = filter_input(INPUT_POST, 'fullname');
                 $email = filter_input(INPUT_POST, 'email');
                 $birthday = filter_input(INPUT_POST, 'birthday');
