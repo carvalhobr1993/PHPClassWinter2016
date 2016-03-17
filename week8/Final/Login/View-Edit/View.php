@@ -24,7 +24,7 @@
         $binds = array(
                 ":user_id" => $_SESSION['id']
             );
-            var_dump($binds);
+         //   var_dump($binds);
          $results = array();
         if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);

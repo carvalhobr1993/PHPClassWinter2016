@@ -62,7 +62,7 @@
                     <td><?php echo $row['address_group_id']; ?></td>
                     <td><?php echo $row['fullname']; ?></td> 
                     <td><a href="mailto:<?php echo $row['email']; ?>"><?php echo $row['email']; ?></a></td> 
-                     <td><?php echo $row['address']; ?></td>  
+                     <td><a href="http://maps.google.com/maps?q=<?php echo $row['address']; ?>"><?php echo $row['address']; ?></a></td>  
                      <td><a href="tel:<?php echo $row['phone']; ?>"><?php echo $row['phone']; ?></a></td>
                      <td><?php echo $row['website']; ?></td>
                      <td><?php echo date("F d, Y",strtotime($row['birthday'])); ?></td>

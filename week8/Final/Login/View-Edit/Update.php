@@ -31,7 +31,7 @@
                 $address = filter_input(INPUT_POST, 'address');
                 $phone = filter_input(INPUT_POST, 'phone');
                 $website = filter_input(INPUT_POST, 'website');
-                $stmt = $db->prepare("UPDATE address set address_id = :address_id, address_group_id = :address_group_id, fullname = :fullname, email = :email, birthday = :birthday, address = :address, phone = :phone, website = :website ");
+                $stmt = $db->prepare("UPDATE address set user_id = :user_id, address_group_id = :address_group_id, fullname = :fullname, email = :email, birthday = :birthday, address = :address, phone = :phone, website = :website ");
                 
                 $binds = array(
                 ":address_group_id" => $addressgroupid,
@@ -40,7 +40,8 @@
                 ":birthday" => $birthday,
                 ":address" => $address,
                 ":phone" => $phone,
-                ":website" => $website
+                ":website" => $website,
+                ":user_id" => $_SESSION['id']
     );
 
     if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
@@ -49,21 +50,22 @@
      
     return false;
                 
-                if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
+                if ($stmt->execute($_SESSION['id']) && $stmt->rowCount() > 0) {
                    $result = 'Record updated';
                 }
             } else {
-                $id = filter_input(INPUT_GET, 'address_id');
-                $stmt = $db->prepare("SELECT * FROM address where address_id = :address_id");
+                
+                $stmt = $db->prepare("SELECT * FROM address where user_id = :user_id");
                 $binds = array(
-                    ":address_id" => $id
+                    ":user_id" => $_SESSION['id']
                 );
                 if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
                    $results = $stmt->fetch(PDO::FETCH_ASSOC);
                 }
-                if ( !isset($id) ) {
+                if ( !isset($_SESSION['id']) ) {
                     die('Record not found');
                 }
+                
                 
                 
                 $addressgroup = $results['address_group_id'];
@@ -73,6 +75,10 @@
                 $address = $results['address'];
                 $phone = $results['phone'];
                 $website = $results['website'];
+                $_SESSION['id'] = $results['id'];
+                
+                
+                 
                
            
             }
@@ -101,6 +107,6 @@
         </form>
         
         <p> <a href="View.php">View page</a></p>
-        ?>
+        
     </body>
 </html>
